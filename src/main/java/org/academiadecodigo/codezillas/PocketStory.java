@@ -11,9 +11,7 @@ public class PocketStory implements ApplicationListener<ContextRefreshedEvent> {
         String[] profiles = contextRefreshedEvent.getApplicationContext().getEnvironment().getActiveProfiles();
 
         System.out.println("#### Active Profiles: ####");
-        for (String profile : profiles) {
-            System.out.println("=> " + profile);
-        }
+        System.out.println(profiles[0]);
 
     }
 

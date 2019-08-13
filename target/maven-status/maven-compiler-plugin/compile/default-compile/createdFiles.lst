@@ -1,0 +1,9 @@
+org/academiadecodigo/codezillas/services/LoginService.class
+org/academiadecodigo/codezillas/PocketStory.class
+org/academiadecodigo/codezillas/controller/LoginController.class
+org/academiadecodigo/codezillas/controller/UserController.class
+org/academiadecodigo/codezillas/PositionManager.class
+org/academiadecodigo/codezillas/model/User.class
+org/academiadecodigo/codezillas/services/StoryService.class
+org/academiadecodigo/codezillas/model/Story.class
+org/academiadecodigo/codezillas/services/UserService.class
