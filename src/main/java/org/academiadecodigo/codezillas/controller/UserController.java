@@ -23,7 +23,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, path = {"/list"})
     public String listStories(Model model) {
         model.addAttribute("customers", userService.getUsers());
-        return "userList ";
+        return "login";
     }
 
 }
