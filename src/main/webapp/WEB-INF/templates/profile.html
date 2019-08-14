@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -7,177 +8,113 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>PocketStory Login</title>
+    <title>Pocket Story Profile</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/all.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;">
-            <div class="container">
+<header>
+    <input type="hidden" th:object="${user}">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;">
+        <div class="container">
 
-                <a class="navbar-brand" href="#"><img src="img/header/mini-logo.png" alt="" width="50"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+            <a class="navbar-brand" href="#"><img src="/static/img/mini-logo.png" alt="" width="50"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Storyboard &nbsp;</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>&nbsp; Favorite &nbsp;</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-book-open"></i>&nbsp; My stories &nbsp;</a>
-                        </li>
-                    </ul>
-                    <a class="btn btn-info" href="addstory.html"><i class="fas fa-pencil-alt"></i>&nbsp; Add story
-                        &nbsp;</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{'/user/storyboard'}">Storyboard &nbsp;<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>&nbsp; Favorite &nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{'/user/myStories'}"><i class="fas fa-book-open"></i>&nbsp; My
+                            stories &nbsp;</a>
+                    </li>
+                </ul>
+                <a class="btn btn-info" th:href="@{'/user/'+${user.nickname}+'/addStory'}"><i
+                        class="fas fa-pencil-alt"></i>&nbsp; Add story
+                    &nbsp;</a>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <!--
-    <div class="container">
-        <br>
-        <div class="row">
-            
-                    </article>
-                </div>
-            </div>
+<div class="row" style="padding-top:20px">
+    <div class="col-sm-6 col-xs-12">
 
-             right side bar 
-            <div class="col-lg-3">
-                <div class=" q-wid">
-                    <div class="ui-block">
-
-                        <h6 class="my-4">
-                            <ul class="navbar-nav">
-                                <li>
-                                    <img src="img/profile/profile_pic.jpg" width="60" class="rounded-circle" />
-                                </li>
-                                <br>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Ana Oliveira
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Profile</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Logout</a>
-                                    -->
-
-
-                                    <div class="container" style="padding-top: 15px;">
-                                        <div class="row">
-                                            <!-- left column -->
-                                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                                    
-                                            <div class="text-center">
-                                                <p></p>
-                                                <img src="img/profile/profile_pic.jpg" width="200" class="rounded-circle" />
-                                                <p>
-                                                </p>
-                                              <h6>Change pic</h6> 
-                                              <p></p>
-                                              <input type="file" class="text-center center-block well well-sm">
-                                            </div>
-                                          </div>
-                                          <!-- edit form column -->
-                                          <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-                                            <!-- <div class="alert alert-info alert-dismissable">
-                                              <a class="panel-close close" data-dismiss="alert">×</a> 
-                                              <i class="fa fa-coffee"></i>
-                                              This is an alert, thank you very much
-                                            </div> -->
-                                            <h3>Personal info</h3>
-                                            <form class="form-horizontal" role="form">
-                                              <div class="form-group">
-                                                <label class="col-lg-3 control-label">First name:</label>
-                                                <div class="col-lg-8">
-                                                  <input class="form-control" value="Jane" type="text">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-lg-3 control-label">Last name:</label>
-                                                <div class="col-lg-8">
-                                                  <input class="form-control" value="Bishop" type="text">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-lg-3 control-label">Email:</label>
-                                                <div class="col-lg-8">
-                                                  <input class="form-control" value="janesemail@gmail.com" type="text">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-md-3 control-label">Nickname:</label>
-                                                <div class="col-md-8">
-                                                  <input class="form-control" value="janeuser" type="text">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-md-3 control-label">Password:</label>
-                                                <div class="col-md-8">
-                                                  <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-md-8 control-label">Confirm password:</label>
-                                                <div class="col-md-8">
-                                                  <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                              </div>
-                                              <div class="form-group">
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-8">
-                                                  <input class="btn btn-primary" value="Save Changes" type="button">
-                                                  <span></span>
-                                                  <input class="btn btn-default" value="Cancel" type="reset">
-                                                </div>
-                                              </div>
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
-
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </h6>
-
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-lg-3 -->
+        <div class="text-center">
+            <p></p>
+            <img src="/static/img/profile_pic.jpg" width="200" class="rounded-circle"/>
+            <p>
+            </p>
+            <h6>Change pic</h6>
+            <p></p>
         </div>
     </div>
+    <!-- edit form column -->
+    <div class="col-sm-6 col-xs-12 personal-info">
+        <!-- <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          This is an alert, thank you very much
+        </div> -->
+        <h3>Personal info</h3>
+        <form class="form-horizontal" role="form" th:object="${user}" th:action="@{'/user/profileVer'}" method="post"
+              id="story">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Nick Name:</label>
+                <div class="col-lg-8">
+                    <input class="form-control" th:value="${user.nickname}" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label"> Username: </label>
+                <div class="col-md-8">
+                    <input class="form-control" th:value="${user.username}" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label"> Password: </label>
+                <div class="col-md-8">
+                    <input class="form-control" th:value="${user.password}" type="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <input class="btn btn-primary" value="Save Changes" type="submit">
+                    <span></span>
+                    <input class="btn btn-default" value="Cancel" type="reset" th:href="@{'/user/storyboard'}">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
-    <script src="fontawesome/js/all.min.js"></script>
+<script src="/static/fontawesome/js/all.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+</script>
 
 </body>
 

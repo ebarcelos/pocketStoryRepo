@@ -10,201 +10,210 @@
     <title>PocketStory Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/all.css">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
 </head>
 
 <body>
-    <header>
-        <input type="hidden" th:object="${user}">
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;">
-            <div class="container">
+<header>
+    <input type="hidden" th:object="${user}">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black;">
+        <div class="container">
 
-                <a class="navbar-brand" href="#"><img src="img/header/mini-logo.png" alt="" width="50"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+            <a class="navbar-brand" href="#"><img src="/static/img/mini-logo.png" alt="" width="50"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Storyboard &nbsp;<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>&nbsp; Favorite &nbsp;</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-book-open"></i>&nbsp; My stories &nbsp;</a>
-                        </li>
-                    </ul>
-                    <a class="btn btn-info" href="addstory.html"><i class="fas fa-pencil-alt"></i>&nbsp; Add story
-                        &nbsp;</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{'/user/storyboard'}">Storyboard &nbsp;<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>&nbsp; Favorite &nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{'/user/myStories'}"><i class="fas fa-book-open"></i>&nbsp; My stories &nbsp;</a>
+                    </li>
+                </ul>
+                <a class="btn btn-info" href="addstory.html"><i class="fas fa-pencil-alt"></i>&nbsp; Add story
+                    &nbsp;</a>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="ui-block">
-                    <article class="hentry post">
-                        <form th:object="${story}" th:action="@{'/user/login/verify'}" method="post" id="story_form">
-                            <div class="card mt-4">
-                                <div class="card-body">
-                                    <p class="card-title">
-                                        <div class="row">
-                                            <div class="col-sm-7">
-                                                <h4>My Story</h4>
-                                            </div>
-                                            <div class="col-sm-3 text-right">
-                                                Milton Barcelos
-                                            </div>
-
-                                            <div class="col-sm-2 text-center">
-                                                <img src="/static/img/profile_pic.jpg" width="100" height="100" class="rounded-circle"
-                                                    alt="author" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group font-weight-bold">
-                                            <label for="exampleFormControlTextarea1">Title</label>
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="1" />
-                                        </div>
-                                    </p>
-                                    <div class="form-group font-weight-bold">
-                                        <label for="exampleFormControlTextarea1">Story time</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="10"></textarea>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="ui-block">
+                <article class="hentry post">
+                    <form th:object="${story}" th:action="@{'/user/addStory'}" method="post" id="story_form">
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <p class="card-title">
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <h4>My Story</h4>
                                     </div>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                        </div>
-                                        <p>
-                                        </p>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-                                    <p>
+                                    <div class="col-sm-3 text-right" th:text="${user.nickname}">
 
-                                    </p>
-
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="defaultInline1"
-                                            name="inlineDefaultRadiosExample">
-                                        <label class="custom-control-label" for="defaultInline1">1st Person</label>
                                     </div>
 
-                                    <!-- Default inline 2-->
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="defaultInline2"
-                                            name="inlineDefaultRadiosExample">
-                                        <label class="custom-control-label" for="defaultInline2">3rd Person</label>
+                                    <div class="col-sm-2 text-center">
+                                        <img src="/static/img/profile_pic.jpg" width="100" height="100"
+                                             class="rounded-circle"
+                                             alt="author"/>
                                     </div>
-
-                                    <div class="form-group">
-                                        <input class="form-control" id="lat" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" id="long" />
-                                    </div>
-
                                 </div>
-                                <div class="card-footer bg-transparent">
-                                    <div class="row">
-                                        <div class="col-sm-12 text-right">
-                                            <button type="button" class="btn btn-primary pull-right"
-                                                onclick="submit();"><i class="fas fa-check-double"></i>&nbsp;
-                                                Submit</button>
-                                        </div>
+                                <div class="form-group font-weight-bold">
+                                    <label for="title">Title</label>
+                                    <input class="form-control" id="title" rows="1" th:field="*{title}"/>
+                                </div>
+                                </p>
+                                <div class="form-group font-weight-bold">
+                                    <label for="story">Story time</label>
+                                    <textarea class="form-control" id="story"
+                                              rows="10" th:field="*{text}"></textarea>
+                                </div>
+                                <!-- <div class="input-group">
+                                     <div class="input-group-prepend">
+                                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                     </div>
+                                     <p>
+                                     </p>
+                                     <div class="custom-file">
+                                         <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                             aria-describedby="inputGroupFileAddon01">
+                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                     </div>
+                                 </div>
+                                 <p>
+
+                                 </p>
+                                 <div class="custom-control custom-radio custom-control-inline">
+                                     <input type="radio" class="custom-control-input" id="defaultInline1"
+                                         name="inlineDefaultRadiosExample" th:field="*{author}">
+                                     <label class="custom-control-label" for="defaultInline1">1st Person</label>
+                                 </div>
+
+
+                                 <div class="custom-control custom-radio custom-control-inline">
+                                     <input type="radio" class="custom-control-input" id="defaultInline2"
+                                         name="inlineDefaultRadiosExample">
+                                     <label class="custom-control-label" for="defaultInline2">3rd Person</label>
+                                 </div>
+                                 -->
+
+                                <div class="form-group">
+                                    <input class="form-control" id="lat" th:field="*{latitude}" required hidden/>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="long" th:field="*{longitude}" required hidden/>
+                                </div>
+
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <div class="row">
+                                    <div class="col-sm-12 text-right">
+                                        <button type="button" class="btn btn-primary pull-right"
+                                                onclick="submit_form();"><i class="fas fa-check-double"></i>&nbsp;
+                                            Submit
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </article>
-                </div>
+                        </div>
+                    </form>
+                </article>
             </div>
-
-            <!-- right side bar -->
-            <div class="col-lg-3">
-                <div class=" q-wid">
-                    <div class="ui-block">
-
-                        <h6 class="my-4">
-                            <ul class="navbar-nav">
-                                <li>
-                                    <img src="img/profile/profile_pic.jpg" width="40" class="rounded-circle" />
-                                </li>
-                                <br>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Ana Oliveira
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Profile</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Logout</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </h6>
-
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-lg-3 -->
         </div>
+
+        <!-- right side bar -->
+        <div class="col-lg-3">
+            <div class=" q-wid">
+                <div class="ui-block">
+
+                    <h6 class="my-4">
+                        <ul class="navbar-nav">
+                            <li>
+                                <img src="/static/img/profile_pic.jpg" width="40" class="rounded-circle"/>
+                            </li>
+                            <br>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                   th:text="${user.nickname}">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"
+                                       th:href="@{'/user/'+${user.nickname}+'/profile'}">Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" th:href="@{'/user/logout'}">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </h6>
+
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-3 -->
     </div>
+</div>
 
+<script>
 
-    <script>
-        window.lat = 0;
-        window.lng = 0;
+    window.lat = 0;
+    window.lng = 0;
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(updatePosition);
-            }
-            return null;
-        };
-
-        function updatePosition(position) {
-            if (position) {
-                window.lat = position.coords.latitude;
-                window.lng = position.coords.longitude;
-            }
-            // alert(window.lat + ":" + window.lng);
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(updatePosition);
         }
+        return null;
+    };
 
-        function submit() {
-            updatePosition(getLocation());
-            $('#lat').val(window.lat);
-            $('#long').val(window.long);
-            $('#story_form').submit();
+    function updatePosition(position) {
+        if (position) {
+            window.lat = position.coords.latitude;
+            window.lng = position.coords.longitude;
         }
-    </script>
+    }
 
-    <script src="fontawesome/js/all.min.js"></script>
+    function submit_form() {
+        updatePosition(getLocation());
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+
+        var lat = $('#lat');
+        var long = $('#long');
+
+        lat.val(window.lat);
+        long.val(window.lng);
+
+        $('#story_form').submit();
+
+    }
+</script>
+
+<script src="/static/fontawesome/js/all.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+</script>
 
 </body>
 

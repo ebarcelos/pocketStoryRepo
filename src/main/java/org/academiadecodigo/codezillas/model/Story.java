@@ -1,26 +1,39 @@
 package org.academiadecodigo.codezillas.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Story {
 
-    private User author;
+    private String author;
     private String datePublished;
     private String title;
     private String text;
     private int rank;
     private String photos;
     private User[] likedUsers;
-    private String location;
+    private float longitude;
+    private float latitude;
+    private boolean ownStory;
 
-    public Story(){
+    public Story() {
 
     }
 
-    public User getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isOwnStory() {
+        return ownStory;
+    }
+
+    public void setOwnStory(boolean ownStory) {
+        this.ownStory = ownStory;
     }
 
     public String getDatePublished() {
@@ -71,11 +84,19 @@ public class Story {
         this.likedUsers = likedUsers;
     }
 
-    public String getLocation() {
-        return location;
+    public float getLongitude() {
+        return longitude;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
     }
 }

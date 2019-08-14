@@ -20,7 +20,6 @@
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(updatePosition);
         }
-      
         return null;
     };
 
@@ -29,6 +28,8 @@
         window.lat = position.coords.latitude;
         window.lng = position.coords.longitude;
       }
+
+      alert(window.lat + ":" + window.lng);
     }
     
     setInterval(function(){updatePosition(getLocation());}, 10000);
