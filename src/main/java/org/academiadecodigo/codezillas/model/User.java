@@ -1,5 +1,7 @@
 package org.academiadecodigo.codezillas.model;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import javax.persistence.Entity;
 
 @Entity
