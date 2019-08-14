@@ -61,8 +61,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/profileVer")
     public String changeProfileHome(@ModelAttribute("user") User user1, RedirectAttributes redirectAttributes) {
-        stUpUser(user1);
-        redirectAttributes.addFlashAttribute("user",user1);
         return "redirect:/user/storyboard";
     }
 
