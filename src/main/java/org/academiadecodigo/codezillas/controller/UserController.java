@@ -71,5 +71,10 @@ public class UserController {
         return "profile";
     }
 
+    @RequestMapping(method = RequestMethod.GET,path = "/{user}/addStory")
+    public String addStory(@SessionAttribute("user") User user , Model model){
+        model.addAttribute(user);
+        return "addstory";
+    }
 
 }

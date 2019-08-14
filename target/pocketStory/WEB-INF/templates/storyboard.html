@@ -41,7 +41,7 @@
                             <a class="nav-link" href="#"><i class="fas fa-book-open"></i>&nbsp; My stories &nbsp;</a>
                         </li>
                     </ul>
-                    <a class="btn btn-info" href="/static/addstory.html"><i class="fas fa-pencil-alt"></i>&nbsp; Add story
+                    <a class="btn btn-info" th:href="@{'/user/'+${user.nickname}+'/addStory'}"><i class="fas fa-pencil-alt"></i>&nbsp; Add story
                         &nbsp;</a>
                 </div>
             </div>
