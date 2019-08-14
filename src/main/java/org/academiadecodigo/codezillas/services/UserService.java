@@ -24,8 +24,8 @@ public class UserService {
     private void init() {
         users = new HashMap<>();
         User user = new User();
-        user.setUsername("tiago");
-        user.setNickname("Tiaguimm");
+        user.setUsername("Ana");
+        user.setNickname("Anão");
         user.setPassword("0000");
         Story story = new Story();
         story.setTitle("The duke's story");

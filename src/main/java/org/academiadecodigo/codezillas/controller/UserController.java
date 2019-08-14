@@ -60,10 +60,9 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/profileVer")
-    public String changeProfileHome(@SessionAttribute("user") User user, @ModelAttribute("user") User user1, Model model) {
+    public String changeProfileHome(@ModelAttribute("user") User user1, RedirectAttributes redirectAttributes) {
         stUpUser(user1);
-        model.addAttribute("user",user1);
-
+        redirectAttributes.addFlashAttribute("user",user1);
         return "redirect:/user/storyboard";
     }
 
@@ -106,8 +105,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET,path = "/myStories")
     public String myStories(@SessionAttribute("user") User user){
-
-
 
         return "myStories";
     }
